@@ -12,8 +12,11 @@ public class Spawner : MonoBehaviour
 
     void Start(){
         // Have startTimeBetweenSpawns = the saved inrement from the Sceneloader
-        startTimeBtwSpawns = 
+        startTimeBtwSpawns = LevelManager.spawnIncrement;
         timeBtwSpawns = startTimeBtwSpawns;
+        Debug.Log("spawnRate: "+ LevelManager.spawnIncrement);
+
+       
     }
 
     void Update(){

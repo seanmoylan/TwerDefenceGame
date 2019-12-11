@@ -13,11 +13,11 @@ public class Enemy : MonoBehaviour
     private WallScript wall;
     SpriteRenderer spriteRenderer;
 
-
     void Start(){
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        health = LevelManager.enemyHealth;
         //spriteRenderer.color = new Color(22,22,22);
     }
 
@@ -44,7 +44,14 @@ public class Enemy : MonoBehaviour
         }
 
         if(other.CompareTag("Projectile")){
+
+            // Enemy looses health if hit by a projectile
             health--;
+
+            if(health == 0){
+                LevelManager.score++; 
+            }
+            
             Debug.Log("Player Score = "+player.score);
 
             Destroy(other.gameObject);
@@ -64,10 +71,6 @@ public class Enemy : MonoBehaviour
 
     void OnDestroy()
     {
-        
-        player.score++;
-        Instantiate(effect, transform.position, Quaternion.identity);
         Debug.Log("OnDestroyEnemyScript");
-        DestroyImmediate(effect, true);
     }
 }
