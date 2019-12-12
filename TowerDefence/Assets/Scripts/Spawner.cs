@@ -20,6 +20,8 @@ public class Spawner : MonoBehaviour
     }
 
     void Update(){
+        startTimeBtwSpawns = LevelManager.spawnIncrement;
+        
         if(timeBtwSpawns <= 0){
             //spawnEnemy
             int randPos = Random.Range(0, spawnSpots.Length);

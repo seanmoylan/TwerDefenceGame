@@ -6,6 +6,8 @@ public class Shooting : MonoBehaviour
 {
    public GameObject shot;
    private Transform playerPos;
+   Touch touch;
+
 
    void Start(){
        playerPos = GetComponent<Transform>();
@@ -14,12 +16,16 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)){
-            Animation.
-            Instantiate(shot, playerPos.position, Quaternion.identity);
-        }else{
 
+        // Dont allow player to shoot if game is paused
+        if(PauseMenu.gameIsPaused == false){
+            
+            if(Input.GetMouseButtonDown(0)){
+                Instantiate(shot, playerPos.position, Quaternion.identity);
+            }
         }
+        
+
         
     }
 }

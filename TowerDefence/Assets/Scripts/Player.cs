@@ -13,13 +13,11 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI healthDisplay;
     public TextMeshProUGUI scoreDisplay;
     public TextMeshProUGUI levelDisplay;
+    public GameObject gameover;
 
     void Start(){
-        LevelManager.level++;
 
-        if(LevelManager.score == 20){
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        
     }
 
     void Update(){
@@ -29,10 +27,14 @@ public class Player : MonoBehaviour
 
         if(health <= 0){
             // Game Over
-            
-
+            LevelManager.playerHealth = 0;
+            Time.timeScale = 0f;
+            gameover.SetActive(true);
         }
 
-        
+        if(LevelManager.score == 10){
+            //LevelManager.score = 11;
+            LevelManager.nextLevel();
+        }
     }
 }

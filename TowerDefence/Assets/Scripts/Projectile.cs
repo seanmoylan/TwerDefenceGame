@@ -10,12 +10,11 @@ public class Projectile : MonoBehaviour
 
     void Start(){
         // Get target position based on mouse input
+        //if (Input.)
         targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
+        targetPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
         // Get user input from a touch device
-        if(Input.touchCount > 0){
-            targetPosition = touch.position;
-        }
+        
     }
 
     void Update(){
